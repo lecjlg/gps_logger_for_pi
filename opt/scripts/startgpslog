@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd /home/pi/gpslog
+year=`date +%Y`
+month=`date +%m`
+day=`date +%d`
+hour=`date +%H`
+min=`date +%M`
+logfile="$year$month$day_$hour$min"
+
+gpspipe -R -o $logfile
