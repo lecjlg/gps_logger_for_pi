@@ -6,6 +6,6 @@ month=`date +%m`
 day=`date +%d`
 hour=`date +%H`
 min=`date +%M`
-logfile="$year$month$day_$hour$min"
+logfile="$year$month$day"_"$hour$min"
 
 gpspipe -R -o $logfile
