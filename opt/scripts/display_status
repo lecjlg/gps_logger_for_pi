@@ -4,7 +4,7 @@ latestfile=`ls -ltr |awk '{ print $9 }' |tail -1`
 clear
 echo "Basic check to see if the $latestfile file is logging correctly."
 
-sleep 5
+sleep 2
 
 clear
 
@@ -14,18 +14,18 @@ do
 echo "Test 1 - NMEA output"
 echo ""
 sirfdump -o nmea -f $latestfile |tail -5
-sleep 5
+sleep 2
 clear
 
 echo "Test 2 - rinex-nav"
 echo ""
 sirfdump -o rinex-nav -f $latestfile |tail -6
-sleep 5
+sleep 2
 clear
 
 echo "Test 3 - rinex"
 echo ""
 sirfdump -o rinex -f $latestfile |tail -6
-sleep 5
+sleep 2
 clear
 done

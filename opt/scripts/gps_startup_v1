@@ -1,0 +1,27 @@
+#!/bin/bash
+cd /home/pi/gpslog
+# Wait for 1 minutes for things to settle down
+echo "Starting the GPS Logger"
+echo "Waiting for 60 seconds to set things up"
+sleep 60
+year=`date +%Y`
+month=`date +%m`
+day=`date +%d`
+hour=`date +%H`
+min=`date +%M`
+logfile="$year$month${day}_$hour$min"
+read runtime < /opt/scripts/gps_runtime
+echo "Starting GPS logging to file " $logfile " for " $runtime "seconds"
+( `gpspipe -R -o $logfile` ) & sleep $runtime
+# Keep the log file
+COUNTER=7600
+while [ $COUNTER -gt 0 ]; do
+echo "GPS logger is now running"
+echo "Wait $COUNTER seconds"
+sleep 1
+clear
+let COUNTER=COUNTER-1
+done
+
+
+cp /tmp/gps*.log /home/pi/gpslog

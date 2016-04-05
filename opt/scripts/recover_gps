@@ -1,0 +1,43 @@
+#!/bin/bash
+
+/opt/scripts/stage01.py
+
+COUNTER=30
+while [ $COUNTER -gt 0 ]; do
+echo "Running stage 1 --- set gps into NMEA mode"
+echo "Wait $COUNTER seconds"
+sleep 1
+clear
+let COUNTER=COUNTER-1
+done
+
+/opt/scripts/stage02.py
+
+COUNTER=30
+while [ $COUNTER -gt 0 ]; do
+echo "Running stage 2 --- Syncronise protocol and baud"
+echo "Wait $COUNTER seconds"
+sleep 1
+clear
+let COUNTER=COUNTER-1
+done
+
+
+/opt/scripts/stage02.py
+
+COUNTER=30
+while [ $COUNTER -gt 0 ]; do
+echo "Running stage 3 --- Cold start with lib nav enabled"
+echo "Wait $COUNTER seconds"
+sleep 1
+clear
+let COUNTER=COUNTER-1
+done
+
+clear
+
+echo "All done the gps should be in a working state"
+sleep 5
+
+
+
